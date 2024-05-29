@@ -1,0 +1,12 @@
+-- EXPIRED INGREDIENTS
+SELECT * FROM `yougrocer`.`inventory`
+WHERE expiry_date < CURDATE();
+
+-- NEARING EXPIRY INGREDIENTS
+SELECT * FROM `yougrocer`.`inventory`
+WHERE expiry_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 1 MONTH);
+
+-- SAFE INGREDIENTS
+SELECT * FROM `yougrocer`.`inventory`
+WHERE expiry_date > DATE_ADD(CURDATE(), INTERVAL 1 MONTH);
+
